@@ -1,7 +1,5 @@
 <script>
   import { supabase } from '$lib/supabase';
-  import { error } from '@sveltejs/kit';
-  import { flip } from 'svelte/animate';
 
   let isSignedIn = false;
   let message = '';
@@ -32,9 +30,9 @@
 </script>
 
 <section>
-  {#if isLoading === false && message === ''}
-    <button on:click={signIn}> sign In </button>
-  {:else if message !== ''}
+  <button on:click={signIn}> sign In </button>
+
+  {#if isSignedIn || !isSignedIn}
     <p>{message}</p>
   {/if}
 </section>
